@@ -7,7 +7,6 @@ on:
 
 env:
   IMAGE_NAME: ${{ github.repository }}
-  TIMESTAMP: $(git show --no-patch --no-notes --date=format:%Y%m%d --pretty="%cd" $(git rev-parse --short HEAD))
 
 jobs:
   dockerize:
@@ -22,7 +21,7 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
       - name: Build the Docker image
-        run: docker build . --tag ${{ env.IMAGE_NAME  }}:${{ env.TIMESTAMP }}
+        run: docker build . --tag ${{ env.IMAGE_NAME  }}:$(git show --no-patch --no-notes --date=format:%Y%m%d --pretty="%cd" $(git rev-parse --short HEAD))
 
       - name: Push the Docker image
-        run: docker push ghcr.io/${{ env.IMAGE_NAME  }}:${{ env.TIMESTAMP }}
+        run: docker push ghcr.io/${{ env.IMAGE_NAME  }}:$(git show --no-patch --no-notes --date=format:%Y%m%d --pretty="%cd" $(git rev-parse --short HEAD))
