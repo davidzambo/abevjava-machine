@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
   TIMESTAMP: $(git show --no-patch --no-notes --date=format:%Y%m%d --pretty="%cd" $(git rev-parse --short HEAD))
 
 jobs:
@@ -29,4 +29,4 @@ jobs:
         run: docker build . --tag ${{ env.IMAGE_NAME  }}:${{ env.TAG }}
 
       - name: Push the Docker image
-        run: docker push ghcr.io/${{ env.IMAGE_NAME  }}:${{ env.TAG }}
+        run: docker push ${{ env.IMAGE_NAME  }}:${{ env.TAG }}
