@@ -1,7 +1,9 @@
 name: Abevjava Machine Docker Image builder pipeline
+
 on:
   push:
-    - main
+    branch:
+      - main
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }}
