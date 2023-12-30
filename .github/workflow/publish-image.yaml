@@ -1,0 +1,26 @@
+name: Abevjava Machine Docker Image builder pipeline
+on:
+  push:
+    - main
+
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  TIMESTAMP: $(git show --no-patch --no-notes --date=format:%Y%m%d --pretty="%cd" $(git rev-parse --short HEAD))
+
+jobs:
+  dockerize:
+    name: Dockerize application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Docker login to ghcr.io
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+
+      - name: Build the Docker image
+        run: docker build . --tag ${{ env.IMAGE_NAME  }}:${{ env.TIMESTAMP }}
+
+      - name: Push the Docker image
+        run: docker push ${{ env.IMAGE_NAME  }}:${{ env.TAG }}
