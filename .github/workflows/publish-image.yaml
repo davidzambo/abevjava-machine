@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }}
   TIMESTAMP: $(git show --no-patch --no-notes --date=format:%Y%m%d --pretty="%cd" $(git rev-parse --short HEAD))
 
 jobs:
