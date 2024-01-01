@@ -2,7 +2,7 @@ name: Abevjava Machine Docker Image builder pipeline
 
 on:
   push:
-    branch:
+    branches:
       - main
 
 env:
@@ -30,3 +30,9 @@ jobs:
 
       - name: Push the Docker image
         run: docker push ${{ env.IMAGE_NAME  }}:${{ env.TAG }}
+
+      - name: Tag latest
+        run: docker tag ${{ env.IMAGE_NAME  }}:${{ env.TAG }} ${{ env.IMAGE_NAME  }}:latest
+
+      - name: Push the latest tagged Docker image
+        run: docker push ${{ env.IMAGE_NAME  }}:latest
