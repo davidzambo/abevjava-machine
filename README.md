@@ -6,6 +6,10 @@ The release date reflects the latest abevjava version
 
 ## Release notes:
 
+#### v20240925:
+AbevJava 3.33.0
+NAV_24T1042E nyomtatvány 3.0
+
 #### v20240324:
 AbevJava 3.33.0
 NAV_24T1042E nyomtatvány 2.0  
