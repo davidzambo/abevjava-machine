@@ -23,3 +23,7 @@ NAV_24T1042E nyomtatvány és 3.28.0 verziójú AbevJava
 
 #### v20231230:
 NAV_23T1042E nyomtatvány és 3.28.0 verziójú AbevJava
+
+#### v20240103:
+AbevJava 3.36.0
+NAV_25T1042E nyomtatvány
