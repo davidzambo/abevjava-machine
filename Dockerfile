@@ -1,4 +1,4 @@
-FROM ubuntu:23.04
+FROM ubuntu:24.04
 RUN apt update && apt install openjdk-8-jdk wget xvfb -y
 ENV TZ="Europe/Budapest"
 ENV DISPLAY=:42
